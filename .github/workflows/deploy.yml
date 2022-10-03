@@ -7,14 +7,15 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-    name: build and push
+  checkout:
     runs-on: ubuntu-latest
-
     steps:
       - name: checkout
         uses: actions/checkout@v3
 
+  build-and-push-ecr:
+    runs-on: ubuntu-latest
+    steps:
       - name: AWS ECR
         uses: kciter/aws-ecr-action@v4
         with:
@@ -30,3 +31,4 @@ jobs:
           region: ${{ secrets.REGION }}
           # script before build
           prebuild_script: ./prebuild.sh
+
