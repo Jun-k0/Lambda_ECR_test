@@ -28,4 +28,4 @@ jobs:
           repo: ${{ secrets.REPO }}
           # The AWS region
           region: ${{ secrets.REGION }}
-          prebuild_script: prebuild_script.sh
+          prebuild_script: prebuild.sh
