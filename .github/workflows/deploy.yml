@@ -1,0 +1,31 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: build and push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: AWS ECR
+        uses: kciter/aws-ecr-action@v4
+        with:
+          # The AWS access key id
+          access_key_id: ${{ secrets.ACCESS_KEY_ID }}
+          # The AWS secret access key
+          secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
+          # AWS Account ID
+          account_id: ${{ secrets.ACCOUNT_ID }}
+          # Name of your ECR repository
+          repo: ${{ secrets.REPO }}
+          # The AWS region
+          region: ${{ secrets.REGION }}
+          prebuild_script: prebuild_script.sh
