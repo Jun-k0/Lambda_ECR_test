@@ -1,5 +1,4 @@
 SpeechRecognition
 librosa
-pyaudio
 keyboard
 playsound
