@@ -19,7 +19,7 @@ RATE = 16000
 
 CHUNK = 1024
 
-RECORD_SECONDS = 4000
+RECORD_SECONDS = 10
 
 WAVE_OUTPUT_FILENAME = "file.wav"
 #"C:/Users/jayoo/OneDrive/문서/소리 녹음/file.wav"
@@ -84,10 +84,10 @@ def habit_word():
     r = sr.Recognizer()
 
     sample_wav, rate = librosa.core.load(
-        "/home/ubuntu/project/2022_Graduation_Project/file.wav")
+        "file.wav")
 
     korean_audio = sr.AudioFile(
-        "/home/ubuntu/project/2022_Graduation_Project/file.wav")
+        "file.wav")
 
     sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
     sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
@@ -99,7 +99,7 @@ def habit_word():
     print(num)
     print(len(num))
 
-    wav, sr = librosa.load("/home/ubuntu/project/2022_Graduation_Project/file.wav", sr=16000)
+    wav, sr = librosa.load("file.wav", sr=16000)
     print('sr:', sr)
     print('wav shape:', wav.shape)
     print('length:', wav.shape[0]/float(sr), 'secs')
