@@ -1,18 +1,21 @@
 import json
-import habit
+from fer import Video
+from fer import FER
+import cv2
 
 
 def my_handler(event, context):
     print("Hello, lambda")
     try:
-        ret = habit.habit_word()
+        print(event)
+        face_detector = FER(mtcnn=True)
     except Exception as e:
         print("error -> " + str(e))
         return {
             'statusCode': 500,
-            'body': json.dumps("habit.py error")
+            'body': json.dumps("error")
         }
     return {
         'statusCode': 200,
-        'body': json.dumps(ret)
+        'body': json.dumps("Hello")
     }
